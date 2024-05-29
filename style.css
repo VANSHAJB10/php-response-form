@@ -54,3 +54,7 @@ input,textarea {
     cursor: pointer;
     
 }
+
+.submitMesssage{
+    font-size: 17px;
+}
