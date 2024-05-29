@@ -1,0 +1,19 @@
+*{
+    margin : 0px;
+    padding: 0px;
+    box-sizing: border-box;
+    background-color: rgb(20, 20, 20);
+}
+.formContainer{
+    max-width: 96%;
+    background-color: rgb(20, 20, 20);
+    color: white;
+    padding-top: 10px;
+    margin: auto;
+}
+.formContainer h2{
+    text-align: center;
+}
+.formContainer p{
+    text-align: center;
+}
