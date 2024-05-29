@@ -16,4 +16,4 @@ bash ```https://www.apachefriends.org/download.html```
 MIT License
 
 ## Badges
-https://img.shields.io/badge/php%20-8A2BE2
+![Static Badge] (https://img.shields.io/badge/php%20-8A2BE2)
