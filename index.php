@@ -29,7 +29,22 @@ if(isset($_POST['name']))
     else{
         echo "ERROR: $sql <br> $con->error";
       }
+
     $con->close();
+
+    
+    //Encryption of important data
+
+    $key= 'vbecnkj4r78hvb3%#civ$nfir%09hfrj';
+    function encrypt($data, $key){
+        $encryption_key = base64_decode($key);
+        $iv = openssl_random_pseudo_bytes(openssl_cipher_iv_length('aes-256-cbc'));
+        //the algorithm aes-256-cbc will ensure randomness even if the same data is encrypted many times with the same key
+        $encrypted = openssl_encrypt($data, 'aes-256-cbc', $encryption_key, 0, $iv);
+        return base64_encode($encrypted . '::' . $iv);
+    }
+
+
 }
 
 ?>
