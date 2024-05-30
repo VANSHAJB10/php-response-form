@@ -19,7 +19,7 @@ if(isset($_POST['name']))
     $id = $_POST['id'];
     $phone = $_POST['phone'];
     $email = $_POST['email'];
-    $message = $ POST['message'];
+    $message = $_POST['message'];
 
      $sql = "INSERT INTO `Transaction Form`.`Transaction FORM` (`name`, `id`, `phone`, `email`, `message`) VALUES ('$name', '$id', '$phone', '$email', '$message', current_timestamp());";
 
