@@ -21,18 +21,6 @@ if(isset($_POST['name']))
     $email = $_POST['email'];
     $message = $_POST['message'];
 
-     $sql = "INSERT INTO `Transaction Form`.`Transaction FORM` (`name`, `id`, `phone`, `email`, `message`) VALUES ('$name', '$id', '$phone', '$email', '$message', current_timestamp());";
-
-     if($con->query($sql) == true){
-        $insert = true;
-      }
-    else{
-        echo "ERROR: $sql <br> $con->error";
-      }
-
-    $con->close();
-
-    
     //Encryption of important data
 
     $key= 'vbecnkj4r78hvb3%#civ$nfir%09hfrj';
@@ -43,6 +31,25 @@ if(isset($_POST['name']))
         $encrypted = openssl_encrypt($data, 'aes-256-cbc', $encryption_key, 0, $iv);
         return base64_encode($encrypted . '::' . $iv);
     }
+
+    //ENCRYPT data to be stored in db
+    $nameencrypted = encrypt($name, $key);
+    $idencrypted = encrypt($id, $key);
+    $phoneencrypted = encrypt($phone, $key);
+    $emailencrypted = encrypt($email, $key);
+
+
+    $sql = "INSERT INTO `Transaction Form`.`Transaction FORM` (`name`, `id`, `phone`, `email`, `message`) 
+    VALUES ('$nameencrypted', '$idencrypted', '$phoneencrypted', '$emailencrypted', '$message', current_timestamp());";
+
+    if($con->query($sql) == true){
+       $insert = true;
+     }
+   else{
+       echo "ERROR: $sql <br> $con->error";
+     }
+
+   $con->close();
 
 
 }
